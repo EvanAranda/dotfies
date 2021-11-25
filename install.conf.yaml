@@ -1,0 +1,18 @@
+- defaults:
+    link:
+      relink: true
+    
+- clean: [
+    '~',
+]
+
+- link:
+    ~/.config/nvim: nvim
+    ~/.config/alacritty: alacritty
+    ~/.tmux: tmux
+    ~/.tmux.conf: tmux.conf
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - ["vim +PlugUpdate +PlugClean! +qa", Installing and updating plugins]
+
