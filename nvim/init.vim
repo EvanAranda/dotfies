@@ -3,8 +3,8 @@
 "----------------------------------------------------------------
 
 set expandtab
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 set hidden
 set relativenumber
 set number
@@ -37,6 +37,9 @@ nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
 nmap <leader>vs :source ~/.config/nvim/init.vim<cr>
 
 nmap <leader>Q :bufdo bdelete<cr>
+
+" close buffer in pane and switch to next buffer without closing pane.
+map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR> 
 
 " Allow gf to open non-existent files
 map gf :edit <cfile><cr>
@@ -90,14 +93,24 @@ endif
 call plug#begin(data_dir . '/plugins')
 
 source ~/.config/nvim/plugins/airline.vim
+
 source ~/.config/nvim/plugins/coc.vim
+source ~/.config/nvim/plugins/svelte.vim
+source ~/.config/nvim/plugins/polyglot.vim
+source ~/.config/nvim/plugins/omnisharp.vim
+
 source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/nerdtree.vim
 source ~/.config/nvim/plugins/surround.vim
 source ~/.config/nvim/plugins/fugitive.vim
 source ~/.config/nvim/plugins/editorconfig.vim
+source ~/.config/nvim/plugins/dispatch.vim
+source ~/.config/nvim/plugins/commentary.vim
+source ~/.config/nvim/plugins/vim-test.vim
 
-source ~/.config/nvim/plugins/theme_challenger_deep.vim
+" source ~/.config/nvim/plugins/theme_challenger_deep.vim
+" source ~/.config/nvim/plugins/theme_github_dark.vim
+source ~/.config/nvim/plugins/theme_onedark.vim
 
 call plug#end()
 doautocmd User PlugLoaded

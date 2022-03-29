@@ -11,6 +11,8 @@ let g:coc_global_extensions = [
     \ 'coc-sh',
     \ 'coc-sql',
     \ 'coc-rust-analyzer',
+    \ 'coc-svelte',
+    \ 'coc-pyright'
 \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -52,6 +54,7 @@ nmap <leader>af  <plug>(coc-fix-current)
 nmap <leader>am  <plug>(coc-format-selected)
 xmap <leader>am  <plug>(coc-format-selected)
 nmap <leader>ac  <Plug>(coc-codeaction)
+
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
