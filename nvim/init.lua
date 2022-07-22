@@ -1,2 +1,5 @@
+require("packer_init")
 require("core/options")
 require("core/mappings")
+require("core/colors")
+require("plugins/nvim-tree")

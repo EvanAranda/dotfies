@@ -47,7 +47,7 @@ map("n", "<leader>ve", ":edit $MYVIMRC<cr>")
 map("n", "<leader>vs", ":source $MYVIMRC<cr>")       
 
 -- Close buffer in pane and switch to next buffer without closing pane
-map("", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<cr>") 
+map("", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR>") 
 map("n", "<leader>Q", ":bufdo bdelete<cr>")
 
 -- Pane navigation
@@ -60,3 +60,17 @@ map("n", "<C-l>", "<C-w>l", { silent = true })
 map("n", "H", ":bprevious<cr>", { noremap = true })
 map("n", "L", ":bnext<cr>", { noremap = true })
 
+-----------------------------------------------------------
+-- Nvim Tree
+-----------------------------------------------------------
+map('n', '<C-n>', ':NvimTreeToggle<CR>')            -- open/close
+map('n', '<leader>f', ':NvimTreeRefresh<CR>')       -- refresh
+map('n', '<leader>n', ':NvimTreeFindFile<CR>')      -- search file
+
+-----------------------------------------------------------
+-- Telescope
+-----------------------------------------------------------
+map("n", "<leader>ff", ":Telescope find_files<cr>")
+map("n", "<leader>fg", ":Telescope live_grep<cr>")
+map("n", "<leader>fb", ":Telescope buffers<cr>")
+map("n", "<leader>fh", ":Telescope help_tags<cr>")
