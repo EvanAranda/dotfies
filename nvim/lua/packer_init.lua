@@ -26,9 +26,10 @@ vim.cmd([[
 -- end
 
 return require('packer').startup(function(use)
-    -- My plugins here
     use 'wbthomason/packer.nvim' -- packer can manage itself
 
+    -- Tree and icons
+    use 'kyazdani42/nvim-web-devicons'
     use {
         'kyazdani42/nvim-tree.lua',
         requires = {
@@ -39,9 +40,6 @@ return require('packer').startup(function(use)
     -- Treesitter interface
     use 'nvim-treesitter/nvim-treesitter'
 
-    -- Icons
-    use 'kyazdani42/nvim-web-devicons'
-
     -- Color Schemes
     use 'navarasu/onedark.nvim'
 
@@ -50,6 +48,25 @@ return require('packer').startup(function(use)
     -- or                            , branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
+
+    -- LSP
+    use 'neovim/nvim-lspconfig'
+    use 'slint-ui/vim-slint'
+
+    -- Autocomplete
+    use {
+        'hrsh7th/nvim-cmp',
+        requires = {
+            'L3MON4D3/LuaSnip',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-buffer',
+            'saadparwaiz1/cmp_luasnip',
+        },
+    }
+
+    -- Nim
+    use "arkt8/nim.vim"
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
