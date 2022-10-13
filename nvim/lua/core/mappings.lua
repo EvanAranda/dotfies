@@ -60,6 +60,10 @@ map("n", "<C-l>", "<C-w>l", { silent = true })
 map("n", "H", ":bprevious<cr>", { noremap = true })
 map("n", "L", ":bnext<cr>", { noremap = true })
 
+-- Exit terminal mode
+map("t", "<Esc>", "<C-\\><C-n>", { noremap = true})
+map("n", "<leader>t", ":terminal<CR>")
+
 -----------------------------------------------------------
 -- Nvim Tree
 -----------------------------------------------------------

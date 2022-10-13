@@ -117,21 +117,12 @@ for _, lsp in ipairs(servers) do
     }
   }
 
-  if lsp == "pyright" then
-  end
-
   lspconfig[lsp].setup(config)
 end
 
-lspconfig['nimls'].setup {
-    cmd = { 'nimlsp' },
-    filetypes = { 'nim' },
-    on_attach = on_attach,
-    capabilities = capabilities
-}
-
 require'lspconfig'.omnisharp.setup {
-    cmd = { "dotnet", "/usr/local/Cellar/omnisharp-mono/1.35.3/bin/omnisharp" },
+    -- cmd = { "dotnet", "/Users/emaranda/omnisharp-osx-x64-net6.0/OmniSharp.dll" },
+    cmd = { "omnisharp" },
 
     -- Enables support for reading code style, naming convention and analyzer
     -- settings from .editorconfig.

@@ -19,12 +19,6 @@ vim.cmd([[
     augroup end
 ]])
 
--- Use a protected call so we don't error out on first use
--- local status_ok, packer = pcall(require, 'packer')
--- if not status_ok then
---   return
--- end
-
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim' -- packer can manage itself
 
@@ -38,7 +32,11 @@ return require('packer').startup(function(use)
     }
 
     -- Treesitter interface
-    use 'nvim-treesitter/nvim-treesitter'
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    }
+    use 'nvim-treesitter/nvim-treesitter-textobjects'
 
     -- Color Schemes
     use 'navarasu/onedark.nvim'
@@ -66,7 +64,14 @@ return require('packer').startup(function(use)
     }
 
     -- Nim
-    use "arkt8/nim.vim"
+    -- use "arkt8/nim.vim"
+
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
