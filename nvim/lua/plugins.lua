@@ -15,6 +15,16 @@ local startup = function(use)
     use 'wbthomason/packer.nvim' 
 
     local language = function()
+
+        use { 
+            'simrat39/rust-tools.nvim',
+            requires = {
+                -- Debugging
+                'nvim-lua/plenary.nvim',
+                'mfussenegger/nvim-dap'
+            },
+            -- Config inside plugins/lspconfig.lua
+        }
     end
     
     local utility = function()

@@ -12,10 +12,6 @@ local on_attach = function(client, bufnr)
         end
     })
 
-    -- vim.cmd([[
-    --     autocmd BufPreWrite <buffer> lua vim.lsp.buf.formatting_sync()
-    -- ]])
-
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
@@ -34,32 +30,8 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>f',  function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
-local make_lsp_setup = function()
-    local lsp = require('lspconfig')
-
-    local capabilities = vim.lsp.protocol.make_client_capabilities() 
-    capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-    local lsp_flags = {
-        -- This is the default in Nvim 0.7+
-        debounce_text_changes = 150,
-    }
-
-    local default_opts = {
-        on_attach = on_attach,
-        flags = lsp_flags
-    }
-
-    return function(config_name, opts)
-        opts = opts or {}
-        opts = vim.tbl_extend('force', default_opts, opts)
-        lsp[config_name].setup(opts)
-        print("setup lsp completed - " .. config_name)
-    end
-end
-
 return function()
-    -- local lsp_util = require('lspconfig.util')
+    local lsp_util = require('lspconfig.util')
     local lsp = require('lspconfig')
 
     local capabilities = vim.lsp.protocol.make_client_capabilities() 
@@ -93,7 +65,14 @@ return function()
     -- Settings
     vim.diagnostic.config { virtual_text = true }
 
-    -- Servers
+    -- LSP Servers
+    -- Python
     setup('pyright')
-    setup('rust_analyzer')
+
+    -- Rust
+    require('rust-tools').setup {
+        server = {
+            on_attach = on_attach
+        }
+    }
 end
