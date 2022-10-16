@@ -13,25 +13,56 @@ end
 
 local startup = function(use)
     use 'wbthomason/packer.nvim' 
+
     local language = function()
     end
     
     local utility = function()
-       use {
-           'nvim-treesitter/nvim-treesitter', 
-           run = ':TSUpdate',
-           config = require('plugins.treesitter').config
-       } 
+        use {
+            'nvim-treesitter/nvim-treesitter', 
+            run = ':TSUpdate',
+            config = require('plugins.treesitter')
+        } 
+
+        use {
+            'neovim/nvim-lspconfig',
+            config = require('plugins.lspconfig')
+        }
+
+        use {
+            'hrsh7th/nvim-cmp',
+            requires = {
+                'hrsh7th/cmp-nvim-lsp',
+                'hrsh7th/cmp-buffer',
+                'hrsh7th/cmp-path',
+            },
+            config = require('plugins.cmp')
+        }
+
+        use {
+            "windwp/nvim-autopairs",
+            config = require('plugins.autopairs')
+        }
     end
 
     local interface = function()
         use { -- Nvim-Tree
             'nvim-tree/nvim-tree.lua',
-            requires = {
-                'nvim-tree/nvim-web-devicons', -- optional, for file icons
-            },
-            tag = 'nightly', -- optional, updated every week. (see issue #1193)
-            config = require('plugins.nvim-tree').config
+            requires = { 'nvim-tree/nvim-web-devicons' },
+            tag = 'nightly',
+            config = require('plugins.nvim-tree')
+        }
+
+        use {
+            'nvim-telescope/telescope.nvim', tag = '0.1.0',
+            requires = { 'nvim-lua/plenary.nvim' },
+            config = require('plugins.telescope')
+        }
+
+        use {
+            'nvim-lualine/lualine.nvim',
+            requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+            config = require('plugins.lualine')
         }
     end
 

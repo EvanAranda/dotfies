@@ -1,5 +1,3 @@
-return {
-    config = function()
-        require('nvim-tree').setup()
-    end
-}
+return function()
+    require('nvim-tree').setup()
+end

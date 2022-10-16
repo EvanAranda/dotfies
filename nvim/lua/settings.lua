@@ -10,8 +10,8 @@ vim.opt.tabstop     = tabsize
 vim.opt.softtabstop = tabsize
 
 -- Folding
-vim.opt.foldmethod  = "expr"
-vim.opt.foldexpr    = "nvim_tressitter#expr"
+vim.o.foldmethod  = 'expr'
+vim.o.foldexpr    = 'nvim_treesitter#foldexpr()'
 
 -- Misc
 vim.opt.number        = true
