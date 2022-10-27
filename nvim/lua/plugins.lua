@@ -15,8 +15,7 @@ local startup = function(use)
     use 'wbthomason/packer.nvim' 
 
     local language = function()
-
-        use { 
+        use { -- Rust
             'simrat39/rust-tools.nvim',
             requires = {
                 -- Debugging
@@ -31,48 +30,58 @@ local startup = function(use)
         use {
             'nvim-treesitter/nvim-treesitter', 
             run = ':TSUpdate',
-            config = require('plugins.treesitter')
+            config = function() require('plugins.treesitter') end
         } 
 
-        use {
+        use { -- LSP
             'neovim/nvim-lspconfig',
-            config = require('plugins.lspconfig')
+            config = function() require('plugins.lspconfig') end
         }
 
-        use {
+        use { -- Completion
             'hrsh7th/nvim-cmp',
             requires = {
                 'hrsh7th/cmp-nvim-lsp',
                 'hrsh7th/cmp-buffer',
                 'hrsh7th/cmp-path',
+                -- snippets
+                'L3MON4D3/LuaSnip',
+                'saadparwaiz1/cmp_luasnip'
             },
-            config = require('plugins.cmp')
+            config = function() require('plugins.cmp') end
         }
 
         use {
             "windwp/nvim-autopairs",
-            config = require('plugins.autopairs')
+            config = function() require('plugins.autopairs') end
+        }
+
+        use { -- Commenting
+            'numToStr/Comment.nvim',
+            config = function()
+                require('Comment').setup()
+            end
         }
     end
 
     local interface = function()
-        use { -- Nvim-Tree
+        use { -- File Explorer
             'nvim-tree/nvim-tree.lua',
             requires = { 'nvim-tree/nvim-web-devicons' },
             tag = 'nightly',
-            config = require('plugins.nvim-tree')
+            config = function() require('plugins.nvim-tree') end
         }
 
-        use {
+        use { -- Popup search
             'nvim-telescope/telescope.nvim', tag = '0.1.0',
             requires = { 'nvim-lua/plenary.nvim' },
-            config = require('plugins.telescope')
+            config = function() require('plugins.telescope') end
         }
 
-        use {
+        use { -- Status line
             'nvim-lualine/lualine.nvim',
             requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-            config = require('plugins.lualine')
+            config = function() require('plugins.lualine') end
         }
     end
 
