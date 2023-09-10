@@ -36,8 +36,11 @@ vim.opt.updatetime    = 300
 vim.opt.redrawtime    = 10000
 
 -- Theme
-vim.g.ayucolor = 'dark'
-vim.cmd('colorscheme ayu')
+-- Ayu
+-- vim.g.ayucolor = 'dark'
+-- vim.cmd 'colorscheme ayu'
+-- Nightfox
+vim.cmd 'colorscheme carbonfox'
 
 -- Get out of INSERT mode
 vim.keymap.set('i', 'jk', '<ESC>', { noremap = true })

@@ -87,6 +87,7 @@ local startup = function(use)
 
     local themes = function()
         use 'ayu-theme/ayu-vim'
+        use "EdenEast/nightfox.nvim"
     end
 
     language()

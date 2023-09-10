@@ -8,8 +8,8 @@
 
 - link:
     ~/.config/nvim: nvim
-    ~/.config/doom: doom
     ~/.tmux.conf: tmux.conf
+    ~/.emacs.d: emacs
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
